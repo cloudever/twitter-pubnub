@@ -12,7 +12,7 @@ require('http').createServer(function(request, response) {
     request.addListener('end', function() {
         fileServer.serve(request, response);
     }).resume();
-}).listen(process.env.PORT, process.env.IP);
+}).listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0');
 
 
 var TwitterClient = new Twitter({
