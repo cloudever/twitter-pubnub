@@ -3,10 +3,11 @@ require('dotenv').config();
 var Pubnub = require('pubnub'),
     Twitter = require('twitter')
 
+/** ------------------------------------ **/
+
+/** server index.html page for tests **/
 var serve = require('node-static'),
     fileServer = new serve.Server('./public');
-
-var trackPhrase = 'trump';
 
 require('http').createServer(function(request, response) {
     request.addListener('end', function() {
@@ -14,6 +15,9 @@ require('http').createServer(function(request, response) {
     }).resume();
 }).listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0');
 
+/** ------------------------------------ **/
+
+var trackPhrase = 'trump';
 
 var TwitterClient = new Twitter({
     consumer_key        : process.env.TWITTER_CONSUMER_KEY,
