@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <script src="//cdn.pubnub.com/pubnub-3.14.5.min.js"></script>
+        <script type="text/javascript">
+            var pubnub = PUBNUB.init({
+                subscribe_key: 'sub-c-ed04c8c4-1fec-11e6-bfbc-02ee2ddab7fe',
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            })
+            
+            pubnub.subscribe({
+                channel : 'twitter-stream',
+                message : function(message) {
+                    var node = document.createElement("div");    
+                    var textnode = document.createTextNode(message);
+                    node.appendChild(textnode);                              // Append the text to <li>
+                    document.body.appendChild(node); 
+                }
+            });
+        </script>
+    </body>
+</html>
